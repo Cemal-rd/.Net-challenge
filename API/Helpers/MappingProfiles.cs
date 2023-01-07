@@ -14,6 +14,7 @@ namespace API.Helpers
             public MappingProfiles(){
             CreateMap<Product,ProductToReturnDto>()
             .ForMember(d=>d.Company,o=>o.MapFrom(s=>s.Company.CompanyName));
+
     }
     }
 }

@@ -37,13 +37,13 @@ namespace API.Controllers
 
                 if (!company.IsVerified)
                 {
-                    var responseError = new ResponseError(StatusCodes.Status400BadRequest, "Company should be verified.");
+                    var responseError = new ResponseError(StatusCodes.Status400BadRequest,$"{company.CompanyName} adlı firma onaylanmış olmadığından sipariş verilemiyor.");
                     var response = new Response(false, null, responseError);
                     return BadRequest(response);
                 }
                 else if (order.OrderDate< company.permissionStartDate || order.OrderDate > company.permissionEndDate)
                 {
-                    var responseError = new ResponseError(StatusCodes.Status400BadRequest, "Company does not accepts any orders currently");
+                    var responseError = new ResponseError(StatusCodes.Status400BadRequest, $"{company.CompanyName} adlı firma Bu saat aralığında sipariş kabul etmiyor.");
                     var response = new Response(false, null, responseError);
                     return BadRequest(response);
                 }

@@ -50,13 +50,13 @@ namespace API.Controllers
                 return BadRequest(response);
             }try{
                 var company= await _repository.GetCompanyByIdAsync(id);
-                var mappedcompanydetails=_mapper.Map<Company, Company>(company);
-                if(mappedcompanydetails==null){
+                // var mappedcompanydetails=_mapper.Map<Company, Company>(company); gereksiz
+                if(company==null){
                     var responseError = new ResponseError(StatusCodes.Status404NotFound, "companies not found.");
                     var response = new Response(false, null, responseError);
                     return NotFound(response);
                 }else{
-                    var response=new Response(true,mappedcompanydetails,null);
+                    var response=new Response(true,company,null);
                     return Ok(response);
 
                 }
@@ -70,7 +70,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddOrder_Detail(Company company)
+        public async Task<ActionResult> AddCompany(Company company)
         {
              if(!ModelState.IsValid){
                 var responseError=new ResponseError(StatusCodes.Status400BadRequest,"invalid model");

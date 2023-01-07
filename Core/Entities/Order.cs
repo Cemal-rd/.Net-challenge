@@ -12,7 +12,7 @@ namespace Core.Entities
         public string OrderOwnerName { get; set; }
        
        
-        // [JsonConverter(typeof(TimeConverter))]
+        
         public DateTime OrderDate { get; set; }
         [JsonIgnore]
         public Company Company { get; set; }

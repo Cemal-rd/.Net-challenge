@@ -15,7 +15,7 @@ namespace Infrastructure.Data
         {
             _context = context;
         }
-
+        //ireadonly yapmamızın sebebi burada company üzerinde sadece read işlemi yapmak istediğimiz için
         public async Task<IReadOnlyList<Company>> GetCompaniesAsync()
         {
             return await _context.Companies.ToListAsync();
@@ -33,11 +33,13 @@ namespace Infrastructure.Data
         public void Add(Company company)
         {
             _context.Add(company);
+            // _context.Entry(company).State = EntityState.Added;
         }
 
         public void Delete(Company company)
         {
             _context.Remove(company);
+            // _context.Entry(company).State = EntityState.Deleted;
         }
 
         public void Update(Company company)

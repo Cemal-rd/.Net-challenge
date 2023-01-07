@@ -64,8 +64,8 @@ namespace API.Controllers
             try
             {
                 var product = await _repository.GetProductByIdAsync(id);
-                var MappedProduct = _mapper.Map<Product, ProductToReturnDto>(product);
-                if (MappedProduct == null)
+                var mappedProduct = _mapper.Map<Product, ProductToReturnDto>(product);
+                if (mappedProduct == null)
                 {
                     var responseError = new ResponseError(StatusCodes.Status404NotFound, "Product not found.");
                     var response = new Response(false, null, responseError);
@@ -74,7 +74,7 @@ namespace API.Controllers
                 }
                 else
                 {
-                    var response = new Response(true, MappedProduct, null);
+                    var response = new Response(true, mappedProduct, null);
                     return Ok(response);
 
                 }

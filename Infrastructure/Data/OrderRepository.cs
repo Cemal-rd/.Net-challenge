@@ -35,7 +35,7 @@ namespace Infrastructure.Data
             return await _context.Orders.ToListAsync();
         }
 
-        public IQueryable<Order> Include(params Expression<Func<Order, object>>[] includes)
+        public IQueryable<Order> Include(params Expression<Func<Order, object>>[] includes) //denendi ama şuan kullanılmıyor
         {
            IIncludableQueryable<Order, object> query = null;
 
